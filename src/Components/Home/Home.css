@@ -1,0 +1,30 @@
+.home-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.search-input {
+    width: 30%;
+    padding: 15px;
+}
+
+.search-btn {
+    padding: 16px 28px;
+    background-color: blue;
+    border: none;
+    color: white;
+    font-weight: 600;
+}
+
+.left-side {
+    margin-top: 20px;
+}
+
+.cart-summery {
+    border: 1px solid grey;
+    box-shadow: 4px 4px 8px gray;
+    border-radius: 5px;
+    margin: 20px auto 0;
+    height: 400px;
+    width: 300px;
+}

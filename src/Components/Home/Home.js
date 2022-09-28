@@ -1,9 +1,33 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import Players from '../Players/Players';
+import './Home.css'
 const Home = () => {
+    const [players, setPlayers] = useState([])
+    const [search, setSearch] = useState("")
+    const [cart, setCart] = useState([])
+    useEffect(() => {
+        fetch(`https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=${search}`)
+            .then(res => res.json())
+            .then(data => setPlayers(data.player))
+    }, [search])
+    // console.log(players)
     return (
-        <div>
-            <h1>I am from Home</h1>
+        <div className='home-container'>
+            <div className='left-side'>
+                <input onChange={(e) => setSearch(e.target.value)} type="text" className="search-input" placeholder='Search Player' />
+                <button className='search-btn'>Search</button>
+                <div className='players-container'>
+                    <Players players={players} cart={cart} setCart={setCart}></Players>
+                </div>
+            </div>
+            <div className='right-side'>
+                <div className='cart-summery'>
+                    <h2>This is player Cart!!</h2>
+                    {
+                        cart.map(p => <li>{p.idPlayer}</li>)
+                    }
+                </div>
+            </div>
         </div>
     );
 };
